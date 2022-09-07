@@ -8,10 +8,10 @@ import Button from '@mui/material/Button';
 
 const styles = {
   container: css`
-    background-color: red;
+    // background-color: red;
   `,
   box: css`
-    background-color: blue;
+    // background-color: blue;
   `,
 };
 
