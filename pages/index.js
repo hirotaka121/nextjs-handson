@@ -85,16 +85,17 @@ const Shops = ({ firstViewShops }) => {
           alignItems: 'center',
         }}
       >
-        <ImageList sx={{ width: 500, height: 450 }}>
-          {itemData.map((item) => (
-            <ImageListItem key={item.img}>
+        <ImageList>
+          {shops.map((shop) => (
+            <ImageListItem key={shop.img}>
               <img
-                src={`${item.img}?w=248&fit=crop&auto=format`}
-                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                alt={item.title}
-                loading="lazy"
+                src={`${shop.photo.pc.l}?w=248&fit=crop&auto=format`}
+                // srcSet={`${shop.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                // alt={shop.title}
+                // loading="lazy"
               />
-              <ImageListItemBar title={item.title} subtitle={<span>by: {item.author}</span>} position="below" />
+
+              <ImageListItemBar subtitle={<span>店名: {shop.name}</span>} position="below" />
             </ImageListItem>
           ))}
         </ImageList>
