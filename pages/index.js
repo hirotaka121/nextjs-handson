@@ -44,7 +44,6 @@ const Shops = ({ firstViewShops }) => {
   }, [firstViewShops]);
 
   const onSearchClick = async () => {
-    console.log('keyword', keyword);
     const data = await fetchData(keyword);
 
     setShops(data);
@@ -53,37 +52,7 @@ const Shops = ({ firstViewShops }) => {
 
   return (
     <Container component="main" maxWidth="md">
-      <CustomAppBar value={keyword} onChange={() => setKeyword()} onClick={() => onSearchClick()} />
-
-      {/* <Grid container>
-        <Grid item xs={3}> */}
-
-      {/* <TextField
-          label="キーワードを入力してください"
-        variant="standard"
-      margin="normal"
-        fullWidth
-        value={keyword}
-        onChange={(event) => {
-          setKeyword(event.target.value);
-        }}
-      /> */}
-
-      {/* </Grid>
-
-        <Grid item xs={3}>
-          <Button
-            variant="contained"
-            margin="normal"
-            width="10px"
-            onClick={() => {
-              onSearchClick();
-            }}
-          >
-            検索
-          </Button>
-        </Grid>
-      </Grid> */}
+      <CustomAppBar value={keyword} onChange={setKeyword} onClick={() => onSearchClick()} />
 
       <Box
         component="form"
@@ -98,12 +67,7 @@ const Shops = ({ firstViewShops }) => {
         <ImageList>
           {shops.map((shop) => (
             <ImageListItem key={shop.photo.pc.l}>
-              <img
-                src={`${shop.photo.pc.l}?w=248&fit=crop&auto=format`}
-                // srcSet={`${shop.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                // alt={shop.title}
-                // loading="lazy"
-              />
+              <img src={`${shop.photo.pc.l}?w=248&fit=crop&auto=format`} />
 
               <ImageListItemBar subtitle={<span>店名: {shop.name}</span>} position="below" />
             </ImageListItem>

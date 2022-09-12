@@ -75,9 +75,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const CustomAppBar = ({ value, onChange, onClick }) => {
   const [keyword, setKeyword] = React.useState(value);
 
-  console.log('keyword----------------', keyword);
-  // onClick();
-
   return (
     <AppBar position="static">
       <Toolbar>
@@ -99,14 +96,12 @@ const CustomAppBar = ({ value, onChange, onClick }) => {
               onChange={(event) => {
                 onChange(event.target.value);
                 setKeyword(event.target.value);
-                // console.log('input change', event.target.value);
               }}
               onKeyDown={(event) => {
                 console.log('event', event);
                 if (event.key === 'Enter') {
                   onClick();
-                  // event.preventDefault();
-                  console.log('enterを押しました');
+                  event.preventDefault();
                 }
               }}
             />
