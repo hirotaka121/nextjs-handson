@@ -23,6 +23,7 @@ import InputBase from '@mui/material/InputBase';
 // import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import CustomAppBar from '../src/components/CustomAppBar';
+import Link from '@mui/material/Link';
 
 const fetchData = async (keyword) => {
   const { API_HOST } = getConfig().publicRuntimeConfig;
@@ -31,7 +32,7 @@ const fetchData = async (keyword) => {
   if (keyword) query.set('keyword', keyword);
 
   const host = process.browser ? '' : API_HOST;
-  const res = await fetch(`${host}/api/shops?${query.toString()}`);
+  const res = await fetch(`${host}/api/shops?large_area=Z098&${query.toString()}`);
   return await res.json();
 };
 
@@ -50,6 +51,8 @@ const Shops = ({ firstViewShops }) => {
     setKeyword('');
   };
 
+  console.log(shops);
+
   return (
     <Container component="main" sx={{ padding: '0 !important', margin: '0 !important' }}>
       <CustomAppBar value={keyword} onChange={setKeyword} onClick={() => onSearchClick()} />
@@ -67,7 +70,12 @@ const Shops = ({ firstViewShops }) => {
         <ImageList>
           {shops.map((shop) => (
             <ImageListItem key={shop.photo.pc.l}>
-              <img src={`${shop.photo.pc.l}?w=248&fit=crop&auto=format`} />
+              <img
+                src={`${shop.photo.pc.l}?w=248&fit=crop&auto=format`}
+                onClick={() => {
+                  window.open(shop.urls.pc);
+                }}
+              />
 
               <ImageListItemBar subtitle={<span>店名: {shop.name}</span>} position="below" />
             </ImageListItem>
