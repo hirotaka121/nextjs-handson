@@ -82,7 +82,7 @@ const CustomAppBar = ({ value, onChange, onClick }) => {
           {/* <MenuIcon /> */}
         </IconButton>
         <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
-          <div className="title1">ガチマヤー</div>
+          ガチマヤー
         </Typography>
         <Grid>
           <Search>
