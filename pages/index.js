@@ -62,7 +62,7 @@ const Shops = ({ firstViewShops }) => {
         component="form"
         noValidate
         sx={{
-          marginTop: 8,
+          marginTop: 2,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -73,21 +73,21 @@ const Shops = ({ firstViewShops }) => {
             <ImageListItem
               key={shop.photo.pc.l}
               sx={{
-                paddingRight: 1,
-                paddingLeft: 1,
+                paddingRight: 2,
+                paddingLeft: 2,
               }}
             >
               <Image
                 src={`${shop.photo.pc.l}?w=248&fit=crop&auto=format`}
                 alt={shop.name}
-                width="250%"
-                height="300%"
+                width="400"
+                height="400"
                 onClick={() => {
                   window.open(shop.urls.pc);
                 }}
               />
 
-              <ImageListItemBar
+              {/* <ImageListItemBar
                 subtitle={
                   <div>
                     <span>店名：{shop.name}</span>
@@ -96,7 +96,7 @@ const Shops = ({ firstViewShops }) => {
                   </div>
                 }
                 position="below"
-              />
+              /> */}
             </ImageListItem>
           ))}
         </ImageList>
