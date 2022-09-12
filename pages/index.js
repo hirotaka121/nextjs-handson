@@ -44,6 +44,7 @@ const Shops = ({ firstViewShops }) => {
   }, [firstViewShops]);
 
   const onSearchClick = async () => {
+    console.log('keyword', keyword);
     const data = await fetchData(keyword);
 
     setShops(data);
@@ -52,20 +53,23 @@ const Shops = ({ firstViewShops }) => {
 
   return (
     <Container component="main" maxWidth="md">
-      <CustomAppBar />
-      <Grid container>
-        <Grid item xs={3}>
-          {/* <TextField
-            label="キーワードを入力してください"
-            variant="standard"
-            margin="normal"
-            fullWidth
-            value={keyword}
-            onChange={(event) => {
-              setKeyword(event.target.value);
-            }}
-          /> */}
-        </Grid>
+      <CustomAppBar value={keyword} onChange={() => setKeyword()} onClick={() => onSearchClick()} />
+
+      {/* <Grid container>
+        <Grid item xs={3}> */}
+
+      {/* <TextField
+          label="キーワードを入力してください"
+        variant="standard"
+      margin="normal"
+        fullWidth
+        value={keyword}
+        onChange={(event) => {
+          setKeyword(event.target.value);
+        }}
+      /> */}
+
+      {/* </Grid>
 
         <Grid item xs={3}>
           <Button
@@ -79,7 +83,8 @@ const Shops = ({ firstViewShops }) => {
             検索
           </Button>
         </Grid>
-      </Grid>
+      </Grid> */}
+
       <Box
         component="form"
         noValidate
@@ -104,35 +109,6 @@ const Shops = ({ firstViewShops }) => {
             </ImageListItem>
           ))}
         </ImageList>
-
-        {/* <List>
-          {shops.map((shop) => {
-            return (
-              <ListItem key={shop.id}>
-                <ListItemButton
-                  onClick={() => {
-                    // TODO: goto shop detail
-                  }}
-                >
-                  <ListItemAvatar>
-                    <Avatar alt={shop.name} src={shop.logo_image} />
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={`${shop.genre.name} ${shop.name}`}
-                    secondary={
-                      <>
-                        <Typography variant="body1" component="span">
-                          {`${shop.catch} ${shop.shop_detail_memo}`}
-                        </Typography>
-                        <Typography variant="caption">{shop.address}</Typography>
-                      </>
-                    }
-                  />
-                </ListItemButton>
-              </ListItem>
-            );
-          })}
-        </List> */}
       </Box>
     </Container>
   );

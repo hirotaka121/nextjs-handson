@@ -65,7 +65,19 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const CustomAppBar = () => {
+// const onSearchClick = async () => {
+//   const data = await fetchData(keyword);
+
+//   setShops(data);
+//   setKeyword('');
+// };
+
+const CustomAppBar = ({ value, onChange, onClick }) => {
+  const [keyword, setKeyword] = React.useState(value);
+
+  console.log('keyword----------------', keyword);
+  // onClick();
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -75,12 +87,31 @@ const CustomAppBar = () => {
         <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
           MUI
         </Typography>
-        <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
-        </Search>
+        <Grid>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+              value={keyword}
+              onChange={(event) => {
+                onChange(event.target.value);
+                setKeyword(event.target.value);
+                // console.log('input change', event.target.value);
+              }}
+              onKeyDown={(event) => {
+                console.log('event', event);
+                if (event.key === 'Enter') {
+                  onClick();
+                  // event.preventDefault();
+                  console.log('enterを押しました');
+                }
+              }}
+            />
+          </Search>
+        </Grid>
       </Toolbar>
     </AppBar>
   );
