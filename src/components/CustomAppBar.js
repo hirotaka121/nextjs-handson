@@ -15,7 +15,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Grid from '@mui/material/Grid';
-import { styled, alpha } from '@mui/material/styles';
+import { styled, alpha, responsiveFontSizes } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -82,7 +82,7 @@ const CustomAppBar = ({ value, onChange, onClick }) => {
           {/* <MenuIcon /> */}
         </IconButton>
         <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
-          ガチマヤー
+          <div className="title1">ガチマヤー</div>
         </Typography>
         <Grid>
           <Search>
@@ -90,7 +90,7 @@ const CustomAppBar = ({ value, onChange, onClick }) => {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="検索"
               inputProps={{ 'aria-label': 'search' }}
               value={keyword}
               onChange={(event) => {

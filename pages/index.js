@@ -24,6 +24,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import CustomAppBar from '../src/components/CustomAppBar';
 import Link from '@mui/material/Link';
+import Image from 'next/image';
 
 const fetchData = async (keyword) => {
   const { API_HOST } = getConfig().publicRuntimeConfig;
@@ -54,7 +55,7 @@ const Shops = ({ firstViewShops }) => {
   console.log(shops);
 
   return (
-    <Container component="main" sx={{ padding: '0 !important', margin: '0 !important' }}>
+    <Container component="main" sx={{ maxWidth: '100%', padding: '0 !important' }} maxWidth={false}>
       <CustomAppBar value={keyword} onChange={setKeyword} onClick={() => onSearchClick()} />
 
       <Box
@@ -67,17 +68,35 @@ const Shops = ({ firstViewShops }) => {
           alignItems: 'center',
         }}
       >
-        <ImageList>
+        <ImageList cols={4}>
           {shops.map((shop) => (
-            <ImageListItem key={shop.photo.pc.l}>
-              <img
+            <ImageListItem
+              key={shop.photo.pc.l}
+              sx={{
+                paddingRight: 1,
+                paddingLeft: 1,
+              }}
+            >
+              <Image
                 src={`${shop.photo.pc.l}?w=248&fit=crop&auto=format`}
+                alt={shop.name}
+                width="250%"
+                height="300%"
                 onClick={() => {
                   window.open(shop.urls.pc);
                 }}
               />
 
-              <ImageListItemBar subtitle={<span>店名: {shop.name}</span>} position="below" />
+              <ImageListItemBar
+                subtitle={
+                  <div>
+                    <span>店名：{shop.name}</span>
+                    <br />
+                    <span>地域：{shop.middle_area.name}</span>
+                  </div>
+                }
+                position="below"
+              />
             </ImageListItem>
           ))}
         </ImageList>

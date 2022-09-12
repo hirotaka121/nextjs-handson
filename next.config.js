@@ -1,6 +1,10 @@
 const { VERCEL_URL, HOTPEPPER_API_KEY } = process.env;
 
 module.exports = {
+  images: {
+    domains: ['imgfp.hotp.jp'],
+  },
+
   reactStrictMode: true,
 
   publicRuntimeConfig: {
