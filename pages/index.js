@@ -51,7 +51,7 @@ const Shops = ({ firstViewShops }) => {
   };
 
   return (
-    <Container component="main" maxWidth="md">
+    <Container component="main" sx={{ padding: '0 !important', margin: '0 !important' }}>
       <CustomAppBar value={keyword} onChange={setKeyword} onClick={() => onSearchClick()} />
 
       <Box

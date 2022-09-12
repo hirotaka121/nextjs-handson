@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { createTheme } from '@mui/material/styles';
-import { blue, brown, lime, purple, red, yellow } from '@mui/material/colors';
+import { blue, brown, lime, purple, red, yellow, orange } from '@mui/material/colors';
 
 const theme = createTheme({
   palette: {
-    primary: brown,
-    secondary: lime,
+    primary: {
+      main: orange[400],
+      contrastText: '#FFFFFF',
+    },
+    secondary: red,
   },
 });
 
