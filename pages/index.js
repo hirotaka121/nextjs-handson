@@ -87,7 +87,7 @@ const Shops = ({ firstViewShops }) => {
                 }}
               />
 
-              {/* <ImageListItemBar
+              <ImageListItemBar
                 subtitle={
                   <div>
                     <span>店名：{shop.name}</span>
@@ -96,7 +96,7 @@ const Shops = ({ firstViewShops }) => {
                   </div>
                 }
                 position="below"
-              /> */}
+              />
             </ImageListItem>
           ))}
         </ImageList>
