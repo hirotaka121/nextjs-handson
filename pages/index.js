@@ -67,7 +67,15 @@ const Shops = ({ firstViewShops }) => {
             >
               <Card sx={{ maxWidth: 400 }}>
                 <CardActionArea>
-                  <CardMedia component="img" height="300" image={shop.photo.pc.l} alt="green iguana" />
+                  <CardMedia
+                    component="img"
+                    height="300"
+                    image={shop.photo.pc.l}
+                    alt="green iguana"
+                    onClick={() => {
+                      window.open(shop.urls.pc);
+                    }}
+                  />
                   <CardContent>
                     <Typography gutterBottom variant="body1" component="div">
                       {shop.name}
