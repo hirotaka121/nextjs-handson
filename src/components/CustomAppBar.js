@@ -67,7 +67,12 @@ const CustomAppBar = ({ value, onChange, onClick }) => {
         <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" sx={{ mr: 2 }}>
           {/* <MenuIcon /> */}
         </IconButton>
-        <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
+        <Typography
+          variant="h5"
+          noWrap
+          component="div"
+          sx={{ fontFamily: 'メイリオ', fontWeight: 'bold', flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+        >
           ガチマヤー
         </Typography>
         <Grid>
