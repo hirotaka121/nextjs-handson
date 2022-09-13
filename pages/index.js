@@ -2,29 +2,16 @@ import React, { useEffect } from 'react';
 import getConfig from 'next/config';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
-import Grid from '@mui/material/Grid';
-import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import InputBase from '@mui/material/InputBase';
-// import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import CustomAppBar from '../src/components/CustomAppBar';
-import Link from '@mui/material/Link';
 import Image from 'next/image';
+import { Typography } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import { CardActionArea } from '@mui/material';
 
 const fetchData = async (keyword) => {
   const { API_HOST } = getConfig().publicRuntimeConfig;
@@ -73,30 +60,24 @@ const Shops = ({ firstViewShops }) => {
             <ImageListItem
               key={shop.photo.pc.l}
               sx={{
-                paddingRight: 2,
-                paddingLeft: 2,
+                paddingBottom: 2,
+                paddingRight: 1,
+                paddingLeft: 1,
               }}
             >
-              <Image
-                src={`${shop.photo.pc.l}?w=248&fit=crop&auto=format`}
-                alt={shop.name}
-                width="400"
-                height="400"
-                onClick={() => {
-                  window.open(shop.urls.pc);
-                }}
-              />
-
-              <ImageListItemBar
-                subtitle={
-                  <div>
-                    <span>店名：{shop.name}</span>
-                    <br />
-                    <span>地域：{shop.middle_area.name}</span>
-                  </div>
-                }
-                position="below"
-              />
+              <Card sx={{ maxWidth: 400 }}>
+                <CardActionArea>
+                  <CardMedia component="img" height="300" image={shop.photo.pc.l} alt="green iguana" />
+                  <CardContent>
+                    <Typography gutterBottom variant="body1" component="div">
+                      {shop.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      地域：{shop.middle_area.name}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
             </ImageListItem>
           ))}
         </ImageList>
